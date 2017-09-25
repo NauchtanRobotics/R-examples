@@ -1,6 +1,6 @@
 setwd("C:\\Users\\David\\Desktop\\Apsim73\\Regions\\M_W_region\\Out_files")
 filesList <- list.files()
-df <- data.frame(FileName=character(),Year=character(), Drainage=double(), Runoff=double(), Canefw=double())
+df <- data.frame(FileName=character(),Year=character(), Drainage=double(), Runoff=double(), Soilloss=double(), Canefw=double())
 #print(filesList[4])
 for( j in 1:length(filesList)) #
 {
@@ -22,7 +22,7 @@ for( j in 1:length(filesList)) #
 		year = substr(data$todaydate[i],8,11)
 		if (!year %in% current_year){
 			
-			de <- data.frame( FileName=filesList[j], Year=current_year, Drainage=DrainAccumulator, Runoff=RunoffAccumulator, Soilloss=double(), Canefw=canefreshweightMax )
+			de <- data.frame( FileName=filesList[j], Year=current_year, Drainage=DrainAccumulator, Runoff=RunoffAccumulator, Soilloss=SoilLossAccumulator, Canefw=canefreshweightMax )
 			df = rbind(df,de, stringsAsFactors=FALSE)
 			# Reset the accumulators
 			DrainAccumulator = 0
@@ -37,7 +37,7 @@ for( j in 1:length(filesList)) #
 		}
 		DrainAccumulator += data$Drainage[i] # Alternatively write in shorthand: DrainAccumulator += data$Drainage[i]
 		RunoffAccumulator += data$Runoff[i]
-		SoilLossAccumulator +=  data$soil_loss
+		SoilLossAccumulator +=  data$soil_loss[i]
 		current_year <- year
 
 	}
@@ -59,19 +59,19 @@ dg <- df[sample(nrow(df), nRowsToPlot ), ]
 # 3. Column bind the results of 7.9 adding to the file for 7.3. Ensure models scenarios align.
 
 # Now plot
-plot(x = dg$Drainage,y = dg$Drainage79,
-   xlab = "ML/ha",
-   ylab = "ML/ha",		 
-   main = "Drainage Validation"
-)
-plot(x = dg$Runoff,y = dg$Runoff79,
-   xlab = "ML/ha",
-   ylab = "ML/ha",		 
-   main = "Runoff Validation"
-)
-plot(x = dg$Soiloss,y = dg$Soilloss79,
-   xlab = "t/ha",
-   ylab = "t/ha",		 
-   main = "Soil Loss Validation"
-)
+#plot(x = dg$Drainage,y = dg$Drainage79,
+#  xlab = "ML/ha",
+#   ylab = "ML/ha",		 
+#   main = "Drainage Validation"
+#)
+#plot(x = dg$Runoff,y = dg$Runoff79,
+#   xlab = "ML/ha",
+#   ylab = "ML/ha",		 
+#   main = "Runoff Validation"
+#)
+#plot(x = dg$Soiloss,y = dg$Soilloss79,
+#   xlab = "t/ha",
+#   ylab = "t/ha",		 
+#   main = "Soil Loss Validation"
+#)
 
