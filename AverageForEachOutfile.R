@@ -1,3 +1,4 @@
+#This R script calculates calendar year averages of basic paddock simulation results and writes them to a csv file
 #Change the line below to suit your file structure
 #Set the Working Directory to the Input files directory
 setwd("C:\\Users\\David\\Desktop\\Apsim73\\Regions\\M_W_region\\Out_files")
