@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-
 #Change the line below to suit your file structure
 #Set the Working Directory to the Input files directory
 setwd("C:\\Users\\David\\Desktop\\Apsim73\\Regions\\M_W_region\\Out_files")
@@ -80,4 +77,3 @@ for( j in 1:length(filesList))
 #Saving the Results File
 write.csv(df,"C:\\Users\\David\\Desktop\\Apsim73\\Regions\\M_W_region\\AveragesOfOutFiles.csv", row.names = FALSE)
 
->>>>>>> a27628e408ea027471a49a42de97001d2abcf0d1
